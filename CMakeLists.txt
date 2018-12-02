@@ -13,6 +13,7 @@ include_directories( "${CMAKE_SOURCE_DIR}" )
 
 set(SOR_SRCS 
     src/main.cpp
+    src/axis.cpp
     )
 
 # GSL (external)
