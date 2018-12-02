@@ -5,7 +5,7 @@ cmake_minimum_required(VERSION 2.6)
 set( CMAKE_VERBOSE_MAKEFILE off )
 set( CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake" )
 set( CMAKE_CXX_COMPILER "g++-8" )
-set( CMAKE_CXX_FLAGS "-std=c++11 -O3" )
+set( CMAKE_CXX_FLAGS "-std=c++11  -O3" )
 set( SOR_EXTRA_INCLUDES )
 set( SOR_EXTRA_LIBRARIES )
 
