@@ -1,3 +1,3 @@
-# SOR
+# IFEDA
 
-Understanding Fermi 2nd order reacceleration in the ISM.
+Understanding Interstellar FErmi Diffusive Acceleration.
