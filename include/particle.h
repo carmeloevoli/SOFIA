@@ -6,13 +6,13 @@
 #include "pid.h"
 
 class Particle: public Grid {
-	Axis _E;
-	Axis _z;
 	PID _pid;
+	Axis _T;
+	Axis _z;
 
 public:
-	Particle(const Axis& E, const Axis& z, const PID& pid, const double& units) :
-			Grid(E.size(), z.size(), units), _E(E), _z(z), _pid(pid) {
+	Particle(const Axis& T, const Axis& z, const PID& pid, const double& units) :
+			Grid(T.size(), z.size(), units), _T(T), _z(z), _pid(pid) {
 		std::cout << "calling constructor of Particle\n";
 	}
 
@@ -24,20 +24,20 @@ public:
 		return _pid;
 	}
 
-	double get_z(const size_t& i) const {
-		return _z.get(i);
-	}
-
-	double get_E(const size_t& i) const {
-		return _E.get(i);
-	}
-
+//	double get_z(const size_t& i) const {
+//		return _z.get(i);
+//	}
+//
+//	double get_T(const size_t& i) const {
+//		return _T.get(i);
+//	}
+//
 	const Axis& getAxisZ() const {
 		return _z;
 	}
 
-	const Axis& getAxisE() const {
-		return _E;
+	const Axis& getAxisT() const {
+		return _T;
 	}
 
 	double integrate() const;

@@ -24,11 +24,11 @@ int main(int argc, char * argv[]) {
 		Params params;
 //params.set_from_file(argv[1]);
 		params.set_params("u", 20.);
-		params.set_params("v_A", 40.);
-		params.set_params("dt", 3.);
+		params.set_params("v_A", 20.);
+		params.set_params("dt", 1.);
 		params.print();
 
-		OutputManager O("output/test2_diffusion+advection+losses+reacc");
+		OutputManager O("output/test3_diffusion+advection+losses+reacc");
 
 		Axis T(cgs::GeV);
 		T.buildLogAxis(params.T_min, params.T_max, params.T_size);
@@ -62,7 +62,7 @@ int main(int argc, char * argv[]) {
 		Sources Q(T, z, 1. / cgs::cm_3 / cgs::GeV_c_3 / cgs::sec);
 		std::cout << " ... built source term Q : " << Q << "\n";
 
-		TimeEvolutor TEvolve(params.dt, 100 * 1000);
+		TimeEvolutor TEvolve(T, z, params.dt, 500 * 1000);
 		TEvolve.doEvolveInSpace();
 		TEvolve.doEvolveInMomentum();
 
@@ -72,6 +72,8 @@ int main(int argc, char * argv[]) {
 		{
 			PID pid = H1;
 			std::cout << "running : " << pid << "\n";
+			auto p = build_momentum_axis(T, pid);
+			std::cout << "p : " << p << "\n";
 			D_zz.build_QLT(pid, W, params.B_0);
 			std::cout << "D_zz : " << D_zz << "\n";
 			D_pp.build(pid, params, D_zz);

@@ -18,6 +18,6 @@ double PowerlawSpectrum(double T_min, double T, double alpha);
 double LinearInterpolator(const std::vector<double>& x, const std::vector<double>& y, const double& x_new);
 double LinearInterpolatorLog(const std::vector<double>& x, const std::vector<double>& y, const double& x_new);
 double Gaussian(double x, double sigma);
-Axis build_momentum_vector(const Axis& E, const PID& pid);
+Axis build_momentum_axis(const Axis& E, const PID& pid);
 
 #endif /* INCLUDE_UTILS_H_ */

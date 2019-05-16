@@ -72,14 +72,13 @@ class TimeEvolutor {
 	size_t _max_counter = 0;
 	bool evolveInSpace = false;
 	bool evolveInMomentum = false;
-	Axis _E;
+	Axis _T;
 	Axis _z;
 	Axis _k;
-	Axis _p;
 
 public:
-	TimeEvolutor(double dt, size_t max_counter) :
-			_dt(dt), _max_counter(max_counter) {
+	TimeEvolutor(const Axis& T, const Axis& z, double dt, size_t max_counter) :
+			_T(T), _z(z), _dt(dt), _max_counter(max_counter) {
 		std::cout << " ... building time evolutor with max time : " << dt * max_counter / cgs::Myr << " Myr\n";
 	}
 
@@ -102,8 +101,8 @@ public:
 			const EnergyLosses& dpdt, const AdvectionVelocity& u_z, PID& pid);
 	void evolve_in_z(const Sources& Q, const DiffusionCoefficient& D_zz, const AdvectionVelocity& u_z, Particle& f,
 			const size_t& number_of_operators);
-	void evolve_in_p(const Sources& Q, const MomentumDiffusionCoefficient& D_pp, const EnergyLosses& dpdt,
-			const AdvectionVelocity& u_z, Particle& f, const size_t& number_of_operators);
+	void evolve_in_p(const Axis& p, const Sources& Q, const MomentumDiffusionCoefficient& D_pp,
+			const EnergyLosses& dpdt, const AdvectionVelocity& u_z, Particle& f, const size_t& number_of_operators);
 
 	void dumpSpectrum(const Particle& f, size_t idisc, size_t counter) const;
 };

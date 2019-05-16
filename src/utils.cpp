@@ -57,7 +57,7 @@ double PowerlawSpectrum(double T_min, double T, double alpha) {
 	return value;
 }
 
-Axis build_momentum_vector(const Axis& E, const PID& pid) {
+Axis build_momentum_axis(const Axis& E, const PID& pid) {
 	Axis p(cgs::GeV_c);
 	p.resize(E.size());
 	for (size_t i = 0; i < E.size(); ++i) {
