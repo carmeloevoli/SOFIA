@@ -15,6 +15,7 @@ public:
 			Grid(T.size(), z.size(), units), _T(T), _z(z) {
 	}
 
+	void build_Skilling(const PID& pid, const Params& params, const WaveSpectrum& W);
 	void build_QLT(const PID& pid, const WaveSpectrum& W, const double& B_0);
 };
 
@@ -27,6 +28,7 @@ public:
 			Grid(T.size(), z.size(), units), _T(T), _z(z) {
 	}
 
+	void build_Skilling(const PID& pid, const Params& params, const WaveSpectrum& W);
 	void build(const PID& pid, const Params& params, const DiffusionCoefficient& D);
 };
 
