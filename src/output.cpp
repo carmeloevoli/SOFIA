@@ -15,7 +15,7 @@ void OutputManager::dumpTimescales(const Sources& Q, const DiffusionCoefficient&
 	for (size_t i = 0; i < T.size(); ++i) {
 		fout << T.get(i) / T.getUnits() << " ";
 		fout << beta_func(T.get(i)) << " ";
-		double p = beta_func(T.get(i)) / cgs::c_light * pid.get_A() * (T.get(i) + cgs::proton_mass_c2);
+		double p = momentum_func(T.get(i), pid.get_A());
 		fout << H * H / 2. / D_zz.get(i, idisc) / cgs::Myr << " ";
 		fout << p * p / D_pp.get(i, idisc) / cgs::Myr << " ";
 		fout << H / u.max() / cgs::Myr << " ";

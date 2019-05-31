@@ -24,11 +24,11 @@ int main(int argc, char * argv[]) {
 		Params params;
 //params.set_from_file(argv[1]);
 		params.set_params("u", 20.);
-		params.set_params("v_A", 20.);
+		params.set_params("v_A", 10.);
 		params.set_params("dt", 1.);
 		params.print();
 
-		OutputManager O("output/test3_diffusion+advection+losses+reacc");
+		OutputManager O("output/test_skilling");
 
 		Axis T(cgs::GeV);
 		T.buildLogAxis(params.T_min, params.T_max, params.T_size);
@@ -74,18 +74,19 @@ int main(int argc, char * argv[]) {
 			std::cout << "running : " << pid << "\n";
 			auto p = build_momentum_axis(T, pid);
 			std::cout << "p : " << p << "\n";
-			D_zz.build_QLT(pid, W, params.B_0);
+			D_zz.build_Skilling(pid, params, W);
 			std::cout << "D_zz : " << D_zz << "\n";
-			D_pp.build(pid, params, D_zz);
+			D_pp.build_Skilling(pid, params, W);
+			std::cout << "D_pp : " << D_pp << "\n";
 			Q.build(pid, params, H_inj);
 			std::cout << "Q : " << Q << "\n";
 			dpdt.build(pid, params);
 			std::cout << "dpdt : " << dpdt << "\n";
 			O.dumpTimescales(Q, D_zz, D_pp, dpdt, u_z);
-			//O.dumpSpectrum(Q, D_zz, dpdt);
+			O.dumpSpectrum(Q, D_zz, dpdt);
 			//O.dumpProfile(Q, D_zz, dpdt, u_z);
-			Particle f_H = TEvolve.evolve(Q, D_zz, D_pp, dpdt, u_z, pid);
-			O.dumpSolution(f_H);
+			////Particle f_H = TEvolve.evolve(Q, D_zz, D_pp, dpdt, u_z, pid);
+			////O.dumpSolution(f_H);
 			//particles.emplace_back(f_H);
 		}
 	} else {
