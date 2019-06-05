@@ -17,6 +17,7 @@ public:
 
 	void build_initial_condition(const Params& params);
 	double getInterpolated(const double& k, const size_t iz) const;
+	void sandbox(const Params& params) const;
 };
 
 #endif /* INCLUDE_WAVES_H_ */
