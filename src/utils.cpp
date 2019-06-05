@@ -26,6 +26,10 @@ double larmor_radius(double T, double B, int A, int Z) {
 	return R / cgs::elementary_charge / B;
 }
 
+double pres_func(double k, double B, int Z) {
+	return (double) Z * cgs::elementary_charge * B / k / cgs::c_light;
+}
+
 double gsl_Gamma_Integrand(double x, void * params) {
 	double alpha = *(double *) params;
 	double f = std::pow(x, 2. - alpha);

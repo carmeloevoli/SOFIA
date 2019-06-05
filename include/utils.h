@@ -13,6 +13,7 @@ double beta_func(double T);
 double gamma_func(double T);
 double momentum_func(double T, size_t A);
 double larmor_radius(double T, double B, int A, int Z);
+double pres_func(double k, double B, int Z);
 double Gamma_Integral(double slope);
 double PowerlawSpectrum(double T_min, double T, double alpha);
 double LinearInterpolator(const std::vector<double>& x, const std::vector<double>& y, const double& x_new);
