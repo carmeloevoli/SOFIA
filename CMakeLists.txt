@@ -17,7 +17,6 @@ set(IFEDA_SRCS
 	src/diffusion.cpp
 	src/evolutor.cpp
 	src/losses.cpp
-	src/main.cpp
 	src/output.cpp
 	src/params.cpp
 	src/particle.cpp
@@ -40,8 +39,11 @@ endif(GSL_FOUND)
 # MAKE EXECUTABLE
 include_directories (include ${IFEDA_EXTRA_INCLUDES})
 
-add_executable(ifeda ${IFEDA_SRCS} )
+add_executable(ifeda ${IFEDA_SRCS} src/main.cpp)
 target_link_libraries (ifeda ${IFEDA_EXTRA_LIBRARIES})
+
+add_executable(sandbox ${IFEDA_SRCS} src/sandbox.cpp)
+target_link_libraries (sandbox ${IFEDA_EXTRA_LIBRARIES})
 
 # Show summary.
 message (STATUS "CMAKE_SYSTEM .......... = ${CMAKE_SYSTEM}")
