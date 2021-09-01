@@ -1,3 +1,3 @@
-# IFEDA
+# SOFIA
 
-Understanding Interstellar FErmi Diffusive Acceleration.
+Second Order Fermi Interstellar Acceleration.
